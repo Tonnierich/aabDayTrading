@@ -2656,7 +2656,7 @@ const AppHeader = observer(() => {
                         </div>
                         <div className="auth-modal__content">
                             {activeLoginid ? (
-                                client.loginid?.startsWith('VR') ? (
+                                client.loginid?.startsWith('CR') ? (
                                     <div className="no-account-state">
                                         <div className="no-account-state__icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32" width="24" height="24" role="img">
@@ -3011,7 +3011,7 @@ const AppHeader = observer(() => {
                                 Cancel
                             </button>
                             
-                            {activeLoginid && !client.loginid?.startsWith('VR') && (
+                            {activeLoginid && !client.loginid?.startsWith('CR') && (
                                 <button
                                     className="auth-modal__button auth-modal__button--primary"
                                     onClick={() => {
