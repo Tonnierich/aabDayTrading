@@ -3010,7 +3010,6 @@ const AppHeader = observer(() => {
                             >
                                 Cancel
                             </button>
-                            
                             {activeLoginid && !client.loginid?.startsWith('CR') && (
                                 <button
                                     className="auth-modal__button auth-modal__button--primary"
