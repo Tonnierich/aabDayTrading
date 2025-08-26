@@ -1,5 +1,5 @@
 import RootStore from '@/stores/root-store';
-import { TOAuth2EnabledAppList, useIsOAuth2Enabled, useOAuth2 } from '@deriv-com/auth-client';
+import { TOAuth2EnabledAppList, useOAuth2 } from '@deriv-com/auth-client';
 import useGrowthbookGetFeatureValue from '../growthbook/useGrowthbookGetFeatureValue';
 
 /**
@@ -27,17 +27,16 @@ export const useOauth2 = ({
             featureFlag: 'hydra_be',
         });
 
-    const isOAuth2Enabled = useIsOAuth2Enabled(
-        oAuth2EnabledApps as unknown as TOAuth2EnabledAppList,
-        OAuth2EnabledAppsInitialised
-    );
-
     const oAuthGrowthbookConfig = {
         OAuth2EnabledApps: oAuth2EnabledApps as unknown as TOAuth2EnabledAppList,
         OAuth2EnabledAppsInitialised,
     };
 
-    const { OAuth2Logout: oAuthLogout } = useOAuth2(oAuthGrowthbookConfig, handleLogout ?? (() => Promise.resolve()));
+    // ✅ useOAuth2 now provides both state and logout
+    const { isOAuth2Enabled, OAuth2Logout: oAuthLogout } = useOAuth2(
+        oAuthGrowthbookConfig,
+        handleLogout ?? (() => Promise.resolve())
+    );
 
     const logoutHandler = async () => {
         client?.setIsLoggingOut(true);
