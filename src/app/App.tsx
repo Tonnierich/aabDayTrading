@@ -1,8 +1,13 @@
 import { initSurvicate } from '../public-path';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
+import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import AppLoaderWrapper from '@/components/app-loader/app-loader-wrapper';
+import { getLoaderDuration, isLoaderEnabled } from '@/components/app-loader/loader-config';
 import ChunkLoader from '@/components/loader/chunk-loader';
 import RoutePromptDialog from '@/components/route-prompt-dialog';
+import { getBotsManifest, prefetchAllXmlInBackground } from '@/utils/freebots-cache';
+import { crypto_currencies_display_order, fiat_currencies_display_order } from '@/components/shared';
 import { StoreProvider } from '@/hooks/useStore';
 import CallbackPage from '@/pages/callback';
 import Endpoint from '@/pages/endpoint';
@@ -24,7 +29,9 @@ const router = createBrowserRouter(
         <Route
             path='/'
             element={
-                <Suspense fallback={<ChunkLoader message={localize('Please wait while we connect to the server...')} />}>
+                <Suspense
+                    fallback={<ChunkLoader message={localize('Please wait while we connect to the server...')} />}
+                >
                     <TranslationProvider defaultLang='EN' i18nInstance={i18nInstance}>
                         <StoreProvider>
                             <RoutePromptDialog />
@@ -35,44 +42,82 @@ const router = createBrowserRouter(
                     </TranslationProvider>
                 </Suspense>
             }
+            errorElement={
+                <div style={{ padding: '20px', textAlign: 'center' }}>
+                    <h1>🚨 Application Error</h1>
+                    <p>Something went wrong. Please check the console for more details.</p>
+                    <button onClick={() => window.location.reload()}>Reload Page</button>
+                </div>
+            }
         >
+            {/* All child routes will be passed as children to Layout */}
             <Route index element={<AppRoot />} />
             <Route path='endpoint' element={<Endpoint />} />
             <Route path='callback' element={<CallbackPage />} />
+            {/* Catch-all route for debugging */}
+            <Route
+                path='*'
+                element={
+                    <div style={{ padding: '20px', textAlign: 'center' }}>
+                        <h1>🔍 Route Debug Info</h1>
+                        <p>Current URL: {window.location.href}</p>
+                        <p>Pathname: {window.location.pathname}</p>
+                        <p>Available routes: /, /endpoint, /callback</p>
+                        <button onClick={() => (window.location.href = '/')}>Go to Home</button>
+                    </div>
+                }
+            />
         </Route>
     )
 );
 
 function App() {
-    useEffect(() => {
+    React.useEffect(() => {
+        // Use the invalid token handler hook to automatically retrigger OIDC authentication
+        // when an invalid token is detected and the cookie logged state is true
+
         initSurvicate();
         window?.dataLayer?.push({ event: 'page_load' });
 
+        // Prefetch Free Bots XMLs on startup for instant availability
+        // Skip prefetch on very slow connections (2G)
+        const shouldPrefetch = !(navigator as any)?.connection || (navigator as any).connection?.effectiveType !== '2g';
+        if (shouldPrefetch) {
+            setTimeout(async () => {
+                try {
+                    const manifest = (await getBotsManifest()) || [];
+                    if (manifest.length) {
+                        prefetchAllXmlInBackground(manifest.map(m => m.file));
+                    }
+                } catch (e) {
+                    console.warn('Prefetch Free Bots failed', e);
+                }
+            }, 0);
+        }
+
         return () => {
-            const survicateBox = document.getElementById('survicate-box');
-            if (survicateBox) {
-                survicateBox.style.display = 'none';
+            // Clean up the invalid token handler when the component unmounts
+            const survicate_box = document.getElementById('survicate-box');
+            if (survicate_box) {
+                survicate_box.style.display = 'none';
             }
         };
     }, []);
 
-    useEffect(() => {
-        const accountsList = localStorage.getItem('accountsList');
-        const clientAccounts = localStorage.getItem('clientAccounts');
-        const activeLoginid = localStorage.getItem('active_loginid');
-        const urlParams = new URLSearchParams(window.location.search);
-        const accountCurrency = urlParams.get('account');
+    React.useEffect(() => {
+        const accounts_list = localStorage.getItem('accountsList');
+        const client_accounts = localStorage.getItem('clientAccounts');
+        const url_params = new URLSearchParams(window.location.search);
+        const account_currency = url_params.get('account');
+        const validCurrencies = [...fiat_currencies_display_order, ...crypto_currencies_display_order];
 
-        if (!accountsList || !clientAccounts) return;
+        const is_valid_currency = account_currency && validCurrencies.includes(account_currency?.toUpperCase());
+
+        if (!accounts_list || !client_accounts) return;
 
         try {
-            const parsedAccounts = JSON.parse(accountsList);
-            const parsedClientAccounts = JSON.parse(clientAccounts) as TAuthData['account_list'];
-            const isValidCurrency = accountCurrency
-                ? Object.values(parsedClientAccounts).some(
-                      (account) => account.currency.toUpperCase() === accountCurrency.toUpperCase()
-                  )
-                : false;
+            const parsed_accounts = JSON.parse(accounts_list);
+            const parsed_client_accounts = JSON.parse(client_accounts) as TAuthData['account_list'];
 
             const updateLocalStorage = (token: string, loginid: string) => {
                 localStorage.setItem('authToken', token);
@@ -80,25 +125,25 @@ function App() {
             };
 
             // Handle demo account
-            if (accountCurrency?.toUpperCase() === 'DEMO') {
-                const demoAccount = Object.entries(parsedAccounts).find(([key]) => key.startsWith('VR'));
+            if (account_currency?.toUpperCase() === 'DEMO') {
+                const demo_account = Object.entries(parsed_accounts).find(([key]) => key.startsWith('VR'));
 
-                if (demoAccount) {
-                    const [loginid, token] = demoAccount;
+                if (demo_account) {
+                    const [loginid, token] = demo_account;
                     updateLocalStorage(String(token), loginid);
                     return;
                 }
             }
 
             // Handle real account with valid currency
-            if (accountCurrency?.toUpperCase() !== 'DEMO' && isValidCurrency) {
-                const realAccount = Object.entries(parsedClientAccounts).find(
+            if (account_currency?.toUpperCase() !== 'DEMO' && is_valid_currency) {
+                const real_account = Object.entries(parsed_client_accounts).find(
                     ([loginid, account]) =>
-                        !loginid.startsWith('VR') && account.currency.toUpperCase() === accountCurrency?.toUpperCase()
+                        !loginid.startsWith('VR') && account.currency.toUpperCase() === account_currency?.toUpperCase()
                 );
 
-                if (realAccount) {
-                    const [loginid, account] = realAccount;
+                if (real_account) {
+                    const [loginid, account] = real_account;
                     if ('token' in account) {
                         updateLocalStorage(String(account?.token), loginid);
                     }
@@ -106,27 +151,15 @@ function App() {
                 }
             }
         } catch (e) {
-            console.warn('Error parsing accounts:', e);
+            console.warn('Error', e); // eslint-disable-line no-console
         }
     }, []);
 
-    // ✅ Register the service worker (for PWA support)
-    useEffect(() => {
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker
-                    .register('/service-worker.js')
-                    .then((registration) => {
-                        console.log('Service Worker registered with scope:', registration.scope);
-                    })
-                    .catch((error) => {
-                        console.log('Service Worker registration failed:', error);
-                    });
-            });
-        }
-    }, []);
-
-    return <RouterProvider router={router} />;
+    return (
+        <AppLoaderWrapper duration={getLoaderDuration()} enabled={isLoaderEnabled()}>
+            <RouterProvider router={router} />
+        </AppLoaderWrapper>
+    );
 }
 
 export default App;
