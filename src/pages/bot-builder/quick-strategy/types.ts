@@ -15,13 +15,16 @@ export type TValidationType = 'min' | 'max' | 'required' | 'number' | 'ceil' | '
 
 export interface ValidationObject {
     getMessage: (min: number | string) => string;
+    getDynamicValue?: (store: any) => number;
+    name?: string;
+    test?: (value: any, context: any) => boolean | string;
 }
 
 export type TValidationItem =
     | TValidationType
     | ({
           type: TValidationType;
-          value: number | string;
+          value?: number | string;
       } & ValidationObject);
 
 export type TStrategyDescription = {
@@ -34,7 +37,7 @@ export type TConfigItem = Partial<{
     name: keyof TFormData;
     dependencies: string[];
     label: string;
-    description: ReactNode;
+    description: ReactNode | ((additional_data: any) => ReactNode);
     attached: boolean;
     hide: string[];
     validation: TValidationItem[];
@@ -114,12 +117,12 @@ export type TApiHelpersInstance = {
 };
 
 export type TRsStrategyName =
-    | `binaryfx d'alembert`
+    | `d'alembert`
     | `martingale`
     | `oscar's-grind`
     | `reverse martingale`
     | `reverse d'alembert`
-    | `Martingale pro`
+    | `1-3-2-6`
     | `accumulators_martingale`
     | `accumulators_dalembert`
     | `accumulators_martingale_on_stat_reset`

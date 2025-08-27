@@ -166,10 +166,12 @@ const FormikWrapper: React.FC<TFormikWrapper> = observer(({ children }) => {
                                     }
                                 } else if (typeof validation === 'object') {
                                     if (validation?.type) {
-                                        schema = schema[validation.type](
-                                            validation.value,
-                                            localize(validation.getMessage(validation.value))
-                                        );
+                                        // Use dynamic value if available
+                                        const value = validation.getDynamicValue
+                                            ? validation.getDynamicValue(quick_strategy)
+                                            : validation.value;
+
+                                        schema = schema[validation.type](value, localize(validation.getMessage(value)));
                                     }
                                 }
                             });
@@ -211,6 +213,19 @@ const QuickStrategy = observer(() => {
     const active_tab_ref = useRef<HTMLDivElement>(null);
     const [current_step, setCurrentStep] = React.useState(QsSteps.StrategySelect);
     const [selected_trade_type, setSelectedTradeType] = React.useState('');
+
+    // Prevent body scrolling when modal is open
+    React.useEffect(() => {
+        if (is_open) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [is_open]);
 
     const sendRudderStackQsFormCloseData = () => {
         const active_tab =
