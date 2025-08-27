@@ -1,27 +1,27 @@
-"use client"
+import clsx from 'clsx';
+import { observer } from 'mobx-react-lite';
+import { standalone_routes } from '@/components/shared';
+import Button from '@/components/shared_ui/button';
+import useActiveAccount from '@/hooks/api/account/useActiveAccount';
+import { useOauth2 } from '@/hooks/auth/useOauth2';
+import { useApiBase } from '@/hooks/useApiBase';
+import { useStore } from '@/hooks/useStore';
+import { StandaloneCircleUserRegularIcon } from '@deriv/quill-icons/Standalone';
+import { requestOidcAuthentication } from '@deriv-com/auth-client';
+import { Localize, useTranslations } from '@deriv-com/translations';
+import { Header, useDevice, Wrapper } from '@deriv-com/ui';
+import { Tooltip } from '@deriv-com/ui';
+import { AppLogo } from '../app-logo';
+import AccountsInfoLoader from './account-info-loader';
+import AccountSwitcher from './account-switcher';
+import MenuItems from './menu-items';
+import MobileMenu from './mobile-menu';
+import PlatformSwitcher from './platform-switcher';
+import { getAppId } from '@/components/shared';
+import './header.scss';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import Modal from '@/components/shared_ui/modal'; // Import the modal component
 
-import { useCallback } from "react"
-import clsx from "clsx"
-import { observer } from "mobx-react-lite"
-import { generateOAuthURL, standalone_routes } from "@/components/shared"
-import Button from "@/components/shared_ui/button"
-import useActiveAccount from "@/hooks/api/account/useActiveAccount"
-import { useOauth2 } from "@/hooks/auth/useOauth2"
-import { useFirebaseCountriesConfig } from "@/hooks/firebase/useFirebaseCountriesConfig"
-import { useApiBase } from "@/hooks/useApiBase"
-import { useStore } from "@/hooks/useStore"
-import useTMB from "@/hooks/useTMB"
-import { handleOidcAuthFailure } from "@/utils/auth-utils"
-import { StandaloneCircleUserRegularIcon } from "@deriv/quill-icons/Standalone"
-import { requestOidcAuthentication } from "@deriv-com/auth-client"
-import { Localize, useTranslations } from "@deriv-com/translations"
-import { Header, useDevice, Wrapper } from "@deriv-com/ui"
-import { Tooltip } from "@deriv-com/ui"
-import { AppLogo } from "../app-logo"
-import AccountsInfoLoader from "./account-info-loader"
-import AccountSwitcher from "./account-switcher"
-import MobileMenu from "./mobile-menu"
-import "./header.scss"
 
 type TAppHeaderProps = {
   isAuthenticating?: boolean
