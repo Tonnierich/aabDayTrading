@@ -16,7 +16,7 @@ import LocalFooter from './local-footer';
 import Recent from './recent';
 import RecentFooter from './recent-footer';
 
-const LoadModal: React.FC = observer((): JSX.Element => {
+const LoadModal: React.FC = observer(() => {
     const { load_modal, dashboard } = useStore();
     const {
         active_index,
@@ -30,33 +30,13 @@ const LoadModal: React.FC = observer((): JSX.Element => {
     } = load_modal;
     const { setPreviewOnPopup } = dashboard;
     const { isDesktop } = useDevice();
-    const header_text: string = localize('Load strategy');
+    const header_text = localize('Load strategy');
 
-    const handleTabItemClick = (active_index: number): void => {
+    const handleTabItemClick = (active_index: number) => {
         setActiveTabIndex(active_index);
         rudderStackSendSwitchLoadStrategyTabEvent({
             load_strategy_tab: LOAD_MODAL_TABS[active_index + (!isDesktop ? 1 : 0)],
         });
-    };
-
-    // Ensure loadFileFromContent is defined on load_modal
-    load_modal.loadFileFromContent = async (xmlContent: string) => {
-        try {
-            console.log('Loading XML content:', xmlContent);
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(xmlContent, 'application/xml');
-            // Define the loadParsedXML method
-            load_modal.loadParsedXML = (xmlDoc: Document) => {
-                // Clear the existing workspace
-                const workspace = Blockly.getMainWorkspace();
-                workspace.clear();
-                // Load the parsed XML into the bot builder
-                Blockly.Xml.domToWorkspace(xmlDoc.documentElement, workspace);
-            };
-            load_modal.loadParsedXML(xmlDoc);
-        } catch (error) {
-            console.error('Error loading XML content:', error);
-        }
     };
 
     if (!isDesktop) {
@@ -88,8 +68,8 @@ const LoadModal: React.FC = observer((): JSX.Element => {
         );
     }
 
-    const is_file_loaded: boolean = !!loaded_local_file && tab_name === tabs_title.TAB_LOCAL;
-    const has_recent_strategies: boolean = recent_strategies.length > 0 && tab_name === tabs_title.TAB_RECENT;
+    const is_file_loaded = !!loaded_local_file && tab_name === tabs_title.TAB_LOCAL;
+    const has_recent_strategies = recent_strategies.length > 0 && tab_name === tabs_title.TAB_RECENT;
 
     return (
         <Modal
@@ -106,7 +86,7 @@ const LoadModal: React.FC = observer((): JSX.Element => {
                 });
             }}
             onEntered={onEntered}
-            elements_to_ignore={[document.querySelector('.injectionDiv') as Element]}
+            elements_to_ignore={[document.querySelector('.injectionDiv')]}
         >
             <Modal.Body>
                 <Tabs active_index={active_index} onTabItemClick={handleTabItemClick} top header_fit_content>
