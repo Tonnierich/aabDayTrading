@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { ToastContainer } from 'react-toastify';
-import AuthLoadingWrapper from '@/components/auth-loading-wrapper';
 import useLiveChat from '@/components/chat/useLiveChat';
 import { BOT_RESTRICTED_COUNTRIES_LIST } from '@/components/layout/header/utils';
 import ChunkLoader from '@/components/loader/chunk-loader';
