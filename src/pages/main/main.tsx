@@ -39,7 +39,7 @@ const ChartWrapper = lazy(() => import('../chart/chart-wrapper'));
 const TradingView = lazy(() => import('../tradingview'));
 const AnalysisTool = lazy(() => import('../analysis-tool'));
 const Signals = lazy(() => import('../signals'));
-const CopyTrading = lazy(() => import('../copy-trading'));
+const AutoTrader = lazy(() => import('../AutoTrader'));
 const SmartTrader = lazy(() => import('../smart-trader'));
 const Dtrader = lazy(() => import('../dtrader'));
 const FreeBots = lazy(() => import('../free-bots/free-bots.tsx')); // Assuming you created free-bots.tsx
@@ -342,17 +342,17 @@ const AppWrapper = observer(() => {
                                             width='24px'
                                             fill='var(--text-general)'
                                         />
-                                        <Localize i18n_default_text='Copy Trading' />
+                                        <Localize i18n_default_text='AutoTrader' />
                                     </>
                                 }
                                 id='id-copy-trading'
                             >
                                 <Suspense
                                     fallback={
-                                        <ChunkLoader message={localize('Please wait, loading Copy Trading...')} />
+                                        <ChunkLoader message={localize('Please wait, loading AutoTrader...')} />
                                     }
                                 >
-                                    <CopyTrading />
+                                    <AutoTrader />
                                 </Suspense>
                             </div>
                             <div
