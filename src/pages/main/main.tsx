@@ -259,21 +259,6 @@ const AppWrapper = observer(() => {
     return (
         <React.Fragment>
             <div className='main'>
-                                <div
-                                label={
-                                    <>
-                                        <LabelPairedPuzzlePieceTwoCaptionBoldIcon
-                                            height='24px'
-                                          width='24px'
-                                    fill='var(--text-general)'
-                                  />
-                              <Localize i18n_default_text='Free Bots' />
-                              </>
-                         }
-                   id='id-free-bots'
-                          >
-               <FreeBots />
-                 </div>
                 <div
                     className={classNames('main__container', {
                         'main__container--active': active_tour && active_tab === DASHBOARD && !isDesktop,
@@ -331,6 +316,22 @@ const AppWrapper = observer(() => {
                                 >
                                     <ChartWrapper show_digits_stats={false} />
                                 </Suspense>
+                            </div>
+
+                            <div
+                                label={
+                                    <>
+                                        <LabelPairedPuzzlePieceTwoCaptionBoldIcon
+                                            height='24px'
+                                            width='24px'
+                                            fill='var(--text-general)'
+                                        />
+                                        <Localize i18n_default_text='Free Bots' />
+                                    </>
+                                }
+                                id='id-free-bots'
+                            >
+                                <FreeBots />
                             </div>
                             <div
                                 label={
