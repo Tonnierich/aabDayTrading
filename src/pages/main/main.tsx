@@ -337,27 +337,6 @@ const AppWrapper = observer(() => {
                             <div
                                 label={
                                     <>
-                                        <LabelPairedSignalCaptionRegularIcon
-                                            height='24px'
-                                            width='24px'
-                                            fill='var(--text-general)'
-                                        />
-                                        <Localize i18n_default_text='autotrader' />
-                                    </>
-                                }
-                                id='id-auto-trader'
-                            >
-                                <Suspense
-                                    fallback={
-                                        <ChunkLoader message={localize('Please wait, loading AutoTrader...')} />
-                                    }
-                                >
-                                    <autotrader />
-                                </Suspense>
-                            </div>
-                            <div
-                                label={
-                                    <>
                                         <LabelPairedPuzzlePieceTwoCaptionBoldIcon
                                             height='24px'
                                             width='24px'
@@ -372,25 +351,6 @@ const AppWrapper = observer(() => {
                                     fallback={<ChunkLoader message={localize('Please wait, loading Smart Trader...')} />}
                                 >
                                     <SmartTrader />
-                                </Suspense>
-                            </div>
-                            <div
-                                label={
-                                    <>
-                                        <LabelPairedChartLineCaptionRegularIcon
-                                            height='24px'
-                                            width='24px'
-                                            fill='var(--text-general)'
-                                        />
-                                        <Localize i18n_default_text='DTrader' />
-                                    </>
-                                }
-                                id='id-dtrader'
-                            >
-                                <Suspense
-                                    fallback={<ChunkLoader message={localize('Please wait, loading DTrader...')} />}
-                                >
-                                    <Dtrader />
                                 </Suspense>
                             </div>
                             <div
