@@ -39,7 +39,7 @@ const ChartWrapper = lazy(() => import('../chart/chart-wrapper'));
 const TradingView = lazy(() => import('../tradingview'));
 const AnalysisTool = lazy(() => import('../analysis-tool'));
 const Signals = lazy(() => import('../signals'));
-const AutoTrader = lazy(() => import('../AutoTrader'));
+const AutoTrader = lazy(() => import('../autotrader'));
 const SmartTrader = lazy(() => import('../smart-trader'));
 const Dtrader = lazy(() => import('../dtrader'));
 const FreeBots = lazy(() => import('../free-bots/free-bots.tsx')); // Assuming you created free-bots.tsx
@@ -342,17 +342,17 @@ const AppWrapper = observer(() => {
                                             width='24px'
                                             fill='var(--text-general)'
                                         />
-                                        <Localize i18n_default_text='AutoTrader' />
+                                        <Localize i18n_default_text='autotrader' />
                                     </>
                                 }
-                                id='id-copy-trading'
+                                id='id-auto-trader'
                             >
                                 <Suspense
                                     fallback={
                                         <ChunkLoader message={localize('Please wait, loading AutoTrader...')} />
                                     }
                                 >
-                                    <AutoTrader />
+                                    <autotrader />
                                 </Suspense>
                             </div>
                             <div
