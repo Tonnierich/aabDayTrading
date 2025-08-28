@@ -53,26 +53,6 @@
       </block>
     </statement>
     <statement name="INITIALIZATION">
-      <block type="text_print" id="PwqtA1)[*oUt6SE?Qs#e">
-        <value name="TEXT">
-          <shadow type="text" id="lnSv?zdH~([*N`sqFY-+">
-            <field name="TEXT">Trade Responsibly!!!</field>
-          </shadow>
-        </value>
-        <next>
-          <block type="variables_set" id="1*jC!Ltn.@JpqosiDeXb">
-            <field name="VAR" id="1Gp/v]LP27,I/mi@$;US" variabletype="">NAME</field>
-            <value name="VALUE">
-              <block type="text_prompt_ext" id="QLcKaok^Z@aUDQbMDgXV">
-                <field name="TYPE">TEXT</field>
-                <value name="TEXT">
-                  <shadow type="text" id="h5X+*[5.x]gKZss%`=U@">
-                    <field name="TEXT">AUTO wealth mine AI PREMIUM, Here we make trading easier for beginners and professional traders :let's green together 💯</field>
-                  </shadow>
-                </value>
-              </block>
-            </value>
-            <next>
               <block type="variables_set" id="we1j!5^/KW#3G$oUqBu^">
                 <field name="VAR" id="9dQ4tsj$@`vWpu;:2{K=" variabletype="">Stake</field>
                 <value name="VALUE">
