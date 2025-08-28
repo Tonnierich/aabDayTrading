@@ -80,7 +80,7 @@
                   <block type="text_print" id=",hDlj4lt%$f:/F}Btp,T" collapsed="true">
                     <value name="TEXT">
                       <shadow type="text" id="M^gz]6DlX%aGt3,h=^.U">
-                        <field name="TEXT">OVER 2 WITH OVER 3 RECOVERY by [HURMY_FX.KE]💰✅</field>
+                        <field name="TEXT">OVER 2 WITH OVER 3 RECOVERY by [emiisdtrader]💰✅</field>
                       </shadow>
                     </value>
                     <next>
@@ -227,7 +227,7 @@
     </value>
   </block>
   <block type="procedures_defreturn" id="aDP;P7cYa2u)$OfbN0*-" collapsed="true" x="0" y="1208">
-    <field name="NAME">Hurmyfx's Grind Trade Amount</field>
+    <field name="NAME">emiisdtrader Grind Trade Amount</field>
     <comment pinned="false" h="80" w="160">Describe this function...</comment>
     <statement name="STACK">
       <block type="controls_if" id="|DM=BKZ:S+$v/3jeXNS]" collapsed="true">
