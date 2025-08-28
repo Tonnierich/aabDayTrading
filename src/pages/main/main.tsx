@@ -258,6 +258,21 @@ const AppWrapper = observer(() => {
     };
     return (
         <React.Fragment>
+                            <div
+                                label={
+                                    <>
+                                        <LabelPairedPuzzlePieceTwoCaptionBoldIcon
+                                            height='24px'
+                                            width='24px'
+                                            fill='var(--text-general)'
+                                        />
+                                        <Localize i18n_default_text='Free Bots' />
+                                    </>
+                                }
+                                id='id-free-bots'
+                            >
+                                <FreeBots />
+                            </div>
             <div className='main'>
                 <div
                     className={classNames('main__container', {
