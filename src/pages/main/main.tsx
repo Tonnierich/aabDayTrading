@@ -403,7 +403,7 @@ const AppWrapper = observer(() => {
                                     <Signals />
                                 </Suspense>
                             </div>
-                        <div label={<><AnalysisToolIcon /><Localize i18n_default_text='Analysis Tool' /></>} id='id-analysis-tool'
+                        <div label={<><AnalysisToolIcon /><Localize i18n_default_text='Pro Tool' /></>} id='id-analysis-tool'
                              onClick={() => handleLinkChange('analysis')}
                             style={{ cursor: 'pointer' }}
                         >
@@ -417,22 +417,6 @@ const AppWrapper = observer(() => {
                         >
                             <Suspense fallback={<ChunkLoader message={localize('Please wait, loading page...')} />}>
                                 <AiPage />
-                            </Suspense>
-                           </div>
-                        <div label={<><ToolIcon /><Localize i18n_default_text='Pro Tool' /></>} id='id-tool'
-                             onClick={() => handleLinkChange('AiPage')}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <Suspense fallback={<ChunkLoader message={localize('Please wait, loading page...')} />}>
-                                <Tool />
-                            </Suspense>
-                           </div>
-                        <div label={<><SignalPageIcon /><Localize i18n_default_text='Exp signal' /></>} id='id-signal'
-                             onClick={() => handleLinkChange('signal')}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <Suspense fallback={<ChunkLoader message={localize('Please wait, loading page...')} />}>
-                                <SignalPage />
                             </Suspense>
                            </div>
                         </Tabs>
