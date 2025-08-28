@@ -19,7 +19,7 @@ const AiPage: React.FC = () => {
         <div style={{ width: '100%' }}>
             <iframe
                 ref={iframeRef}
-                src="/ai/index.html"
+                src="/sbs/autotrader.html"
                 title="AI Signal"
                 style={{
                     width: '100%',
