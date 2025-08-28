@@ -193,6 +193,7 @@ const AppContent = observer(() => {
                     <TransactionDetailsModal />
                     <ToastContainer limit={3} draggable={false} />
                     <TncStatusUpdateModal />
+                    <RiskDisclaimer />
                 </div>
             </ThemeProvider>
         </>
