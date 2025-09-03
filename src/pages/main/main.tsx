@@ -33,6 +33,7 @@ import ChartModal from '../chart/chart-modal';
 import Dashboard from '../dashboard';
 import RunStrategy from '../dashboard/run-strategy';
 import './main.scss';
+import DisplayToggle from "@/components/trading-hub/display-toggle"   // ✅ Auto Trading UI
 
 const ChartWrapper = lazy(() => import('../chart/chart-wrapper'));
 
@@ -46,7 +47,6 @@ const Analysis = lazy(() => import('../analysis/analysis'));
 const AiPage = lazy(() => import('../ai/ai')); // Assuming you created AiPage.tsx
 const Tool = lazy(() => import('../tool/tool'));
 const SignalPage = lazy(() => import('../signal/signal')); // Assuming you created SignalPage.tsx
-const DisplayToggle = lazy(() => import('../trading-hub/display-toggle')); // ✅ Auto Trading UI
 
 const AnalysisToolIcon = () => (
     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
