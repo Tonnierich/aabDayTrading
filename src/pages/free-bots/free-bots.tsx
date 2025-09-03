@@ -52,6 +52,12 @@ const FreeBots = observer(() => {
             icon: '⚡️',
         },
         {
+            name: 'Alpha Version 2025',
+            description: 'Alpha Version 2025',
+            file: 'Alpha Version 2025.xml',
+            icon: '⚡️',
+        },
+        {
             name: 'Emiisdtrader VIP',
             description: 'Emiisdtrader VIP',
             file: 'Emiisdtrader VIP.xml',
@@ -94,21 +100,15 @@ const FreeBots = observer(() => {
             icon: '⚡️',
         },
         {
-            name: 'Emiisdtrader Encroach Trader 💵',
-            description: 'Emiisdtrader Encroach Trader 💵',
-            file: 'Emiisdtrader Encroach Trader 💵.xml',
-            icon: '⚡️',
-        },
-        {
             name: 'New DollarPrinterBot  2025 Version 💰💰💰',
             description: 'New DollarPrinterBot  2025 Version 💰💰💰',
             file: 'New DollarPrinterBot  2025 Version 💰💰💰.xml',
             icon: '⚡️',
         },
         {
-            name: 'Alpha Version 2025',
-            description: 'Alpha Version 2025',
-            file: 'Alpha Version 2025.xml',
+            name: 'Emiisdtrader Encroach Trader 💵',
+            description: 'Emiisdtrader Encroach Trader 💵',
+            file: 'Emiisdtrader Encroach Trader 💵.xml',
             icon: '⚡️',
         },
         {
@@ -261,4 +261,5 @@ const FreeBots = observer(() => {
 });
 
 export default FreeBots;
+
 
