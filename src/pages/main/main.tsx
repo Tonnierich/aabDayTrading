@@ -47,6 +47,7 @@ const Analysis = lazy(() => import('../analysis/analysis'));
 const AiPage = lazy(() => import('../ai/ai')); // Assuming you created AiPage.tsx
 const Tool = lazy(() => import('../tool/tool'));
 const SignalPage = lazy(() => import('../signal/signal')); // Assuming you created SignalPage.tsx
+const DisplayToggle = lazy(() => import('../trading-hub/display-toggle')); // ✅ Auto Trading UI
 
 const AnalysisToolIcon = () => (
     <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,28 +75,6 @@ const SignalPageIcon = () => (
 <path d="M8 6.00067L21 6.00139M8 12.0007L21 12.0015M8 18.0007L21 18.0015M3.5 6H3.51M3.5 12H3.51M3.5 18H3.51M4 6C4 6.27614 3.77614 6.5 3.5 6.5C3.22386 6.5 3 6.27614 3 6C3 5.72386 3.22386 5.5 3.5 5.5C3.77614 5.5 4 5.72386 4 6ZM4 12C4 12.2761 3.77614 12.5 3.5 12.5C3.22386 12.5 3 12.2761 3 12C3 11.7239 3.22386 11.5 3.5 11.5C3.77614 11.5 4 11.7239 4 12ZM4 18C4 18.2761 3.77614 18.5 3.5 18.5C3.22386 18.5 3 18.2761 3 18C3 17.7239 3.22386 17.5 3.5 17.5C3.77614 17.5 4 17.7239 4 18Z" stroke="var(--text-general)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 );
-const AutoTraderIcon = () => (
-  <svg
-    width="20px"
-    height="20px"
-    viewBox="0 0 64 64"
-    fill="none"
-    stroke="var(--text-general)"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <rect x="14" y="14" width="36" height="36" rx="4" ry="4" />
-    <rect x="23" y="23" width="5" height="5" />
-    <rect x="36" y="23" width="5" height="5" />
-    <line x1="18" y1="14" x2="18" y2="6" />
-    <line x1="46" y1="14" x2="46" y2="6" />
-    <line x1="26" y1="50" x2="26" y2="58" />
-    <line x1="38" y1="50" x2="38" y2="58" />
-    <line x1="23" y1="35" x2="41" y2="35" />
-  </svg>
-    );
 
 const AppWrapper = observer(() => {
     const { connectionStatus } = useApiBase();
@@ -439,40 +418,13 @@ const AppWrapper = observer(() => {
                             style={{ cursor: 'pointer' }}
                         >
                             <Suspense fallback={<ChunkLoader message={localize('Please wait, loading page...')} />}>
-                                <AiPage />
+                                <DisplayToggle />
                             </Suspense>
                            </div>
-            {/* AUTO Trading Bot (✨ Redesigned UI) */}
-            <div
-              label={
-                <>
-                  <AutoTraderIcon />
-                  <Localize i18n_default_text="Auto" />
-                </>
-              }
-              id="id-auto"
-            >
-              <div
-                className={classNames(
-                  "dashboard__chart-wrapper auto-tab-wrapper",
-                  {
-                    "dashboard__chart-wrapper--expanded": is_drawer_open && isDesktop,
-                    "dashboard__chart-wrapper--modal": is_chart_modal_visible && isDesktop,
-                  }
-                )}
-              >
-                {/* Unique Auto Trading UI */}
-                <div className="auto-trading-ui">
-                  <h2 className="auto-title">🚀 Smart Auto Trading Bot</h2>
-                  <p className="auto-subtitle">
-                    Switch between <b>Trading Hub</b> and <b>Advanced Mode</b> with style.
-                  </p>
-                  <DisplayToggle />
+                        </Tabs>
+                    </div>
                 </div>
-             </Tabs>
-             </div>
             </div>
-           </div>
             <DesktopWrapper>
                 <div className='main__run-strategy-wrapper'>
                     <RunStrategy />
