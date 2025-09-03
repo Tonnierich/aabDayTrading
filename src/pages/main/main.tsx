@@ -417,7 +417,7 @@ const AppWrapper = observer(() => {
                             style={{ cursor: 'pointer' }}
                         >
                             <Suspense fallback={<ChunkLoader message={localize('Please wait, loading page...')} />}>
-                                <AiPage />
+                                <DisplayToggle />
                             </Suspense>
                            </div>
                         </Tabs>
