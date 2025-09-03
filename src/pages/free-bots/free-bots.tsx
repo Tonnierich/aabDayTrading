@@ -64,6 +64,12 @@ const FreeBots = observer(() => {
             icon: '⚡️',
         },
         {
+            name: 'New DollarPrinterBot  2025 Version 💰💰💰',
+            description: 'New DollarPrinterBot  2025 Version 💰💰💰',
+            file: 'New DollarPrinterBot  2025 Version 💰💰💰.xml',
+            icon: '⚡️',
+        },
+        {
             name: 'Emiisdtrader expert 🚀📊',
             description: 'Emiisdtrader expert 🚀📊',
             file: 'Emiisdtrader expert 🚀📊.xml',
@@ -97,12 +103,6 @@ const FreeBots = observer(() => {
             name: 'Emiisdtrader Fusion Analyzer🔍🔍📊📊',
             description: 'Emiisdtrader Fusion Analyzer🔍🔍📊📊',
             file: 'Emiisdtrader Fusion Analyzer🔍🔍📊📊.xml',
-            icon: '⚡️',
-        },
-        {
-            name: 'New DollarPrinterBot  2025 Version 💰💰💰',
-            description: 'New DollarPrinterBot  2025 Version 💰💰💰',
-            file: 'New DollarPrinterBot  2025 Version 💰💰💰.xml',
             icon: '⚡️',
         },
         {
@@ -261,5 +261,6 @@ const FreeBots = observer(() => {
 });
 
 export default FreeBots;
+
 
 
