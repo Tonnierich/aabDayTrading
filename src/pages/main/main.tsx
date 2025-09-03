@@ -33,7 +33,6 @@ import ChartModal from '../chart/chart-modal';
 import Dashboard from '../dashboard';
 import RunStrategy from '../dashboard/run-strategy';
 import './main.scss';
-import DisplayToggle from "@/components/trading-hub/display-toggle"   // ✅ Auto Trading UI
 
 const ChartWrapper = lazy(() => import('../chart/chart-wrapper'));
 
