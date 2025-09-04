@@ -8,7 +8,24 @@
     }
 }
 
-// Removed tabs-shadow to fix mobile edge fading issue
+.tabs-shadow {
+    position: absolute;
+    top: 8px;
+    height: 40px;
+    width: 64px;
+    z-index: 1;
+    pointer-events: none;
+
+    &--left {
+        left: 0;
+        background: linear-gradient(-88.07deg, transparent 1.63%, #1a1f36 50.02%);
+    }
+
+    &--right {
+        right: 0;
+        background: linear-gradient(88.07deg, transparent 1.63%, #1a1f36 50.02%);
+    }
+}
 
 .main {
     display: flex;
@@ -27,9 +44,6 @@
         border: none;
         max-width: 100%;
         width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
 
         &.no-scroll {
             overflow: hidden;
@@ -44,7 +58,7 @@
                 top: 0;
                 width: 100%;
                 height: 100%;
-                background: rgba(238, 240, 239, 0.986);
+                background: rgb(0 0 0 / 72%);
                 opacity: 0.7;
                 z-index: 100;
             }
@@ -52,31 +66,17 @@
 
         .dc-tabs {
             &__active-line {
-                background-color: #020a7e;
+                background-color: #00d4ff;
                 transition: none;
             }
 
             &__active {
-                background: #27b9ad;
-                color: var(--text-prominent) !important;
-
-                // Ensure active tab text uses theme-aware color
-                * {
-                    color: var(--text-prominent) !important;
-                }
-
-                // Ensure active tab icons use theme-aware color
-                svg,
-                svg > path,
-                svg > g > path {
-                    fill: var(--text-prominent) !important;
-                }
+                background: #0f1419;
+                color: #00ff00; /* PURE DOMINATING GREEN TEXT - BONUS ✅ */
             }
 
-
-
             &__list {
-                background: #6504b4;
+                background: #1a1f36;
                 justify-content: start;
 
                 @include mobile-or-tablet-screen {
@@ -110,16 +110,12 @@
             }
 
             &__content {
-                height: 100%;
-                flex: 1;
-
                 @include mobile-or-tablet-screen {
                     width: 100%;
                     overflow-x: auto;
 
                     &--no-result {
                         @include flex-center;
-
                         flex-direction: column;
                         justify-content: flex-start;
                         height: 100vh;
@@ -131,11 +127,13 @@
 
                         h1 {
                             margin-bottom: 0.8rem;
+                            color: #00ff00; /* PURE GREEN HEADINGS */
                         }
 
                         span {
                             word-break: break-word;
                             text-align: center;
+                            color: #00ff88; /* LIGHTER GREEN FOR SPANS */
                         }
                     }
                 }
@@ -147,7 +145,7 @@
 
                         @include mobile-or-tablet-screen {
                             flex-direction: column;
-                            background-color: var(--general-section-1);
+                            background-color: #1a1f36;
                         }
                     }
                 }
@@ -159,12 +157,17 @@
                 height: 4.8rem;
                 padding: 0 2rem;
                 width: auto;
-
+                color: #00ff88; /* GREEN TAB TEXT - BONUS ✅ */
                 @include flex-center;
+
+                &:hover {
+                    color: #00ff00; /* PURE GREEN ON HOVER - BONUS ✅ */
+                }
 
                 svg {
                     padding-inline-end: 0;
                     margin-inline-end: 0.8rem;
+                    fill: #00ff88; /* GREEN ICONS - BONUS ✅ */
 
                     @include mobile-or-tablet-screen {
                         margin-inline-end: 0.4rem;
@@ -192,16 +195,20 @@
         .animation {
             &__button#db-animation {
                 &__run-button {
-                    background-color: var(--purchase-main-1);
+                    background-color: #00ff88;
+                    color: #000000; /* BLACK TEXT ON GREEN BUTTON */
+                    font-weight: bold;
                 }
 
                 &__stop-button {
-                    background-color: var(--button-primary-hover);
+                    background-color: #ff4757;
+                    color: #ffffff; /* WHITE TEXT ON RED BUTTON */
+                    font-weight: bold;
                 }
             }
 
             &__container {
-                background-color: var(--general-main-1);
+                background-color: #0f1419;
             }
         }
     }
@@ -222,11 +229,15 @@
     .animation {
         &__button#db-animation {
             &__run-button {
-                background-color: var(--purchase-main-1);
+                background-color: #00ff88;
+                color: #000000; /* BLACK TEXT ON GREEN BUTTON */
+                font-weight: bold;
             }
 
             &__stop-button {
-                background-color: var(--button-primary-hover);
+                background-color: #ff4757;
+                color: #ffffff; /* WHITE TEXT ON RED BUTTON */
+                font-weight: bold;
             }
         }
     }
@@ -239,6 +250,7 @@
 
     .dc-dialog {
         position: relative;
+        color: #00ff00; /* PURE GREEN DIALOG TEXT */
 
         &__header-wrapper {
             margin: 0 0 2.4rem;
@@ -252,6 +264,7 @@
 
                 .dc-icon {
                     cursor: pointer;
+                    fill: #00ff88; /* GREEN ICONS */
                 }
             }
         }
@@ -265,6 +278,7 @@
                     width: 40%;
                     min-width: unset;
                     flex-basis: unset;
+                    color: #00ff00; /* GREEN BUTTON TEXT */
 
                     &:first-child {
                         margin-right: 1rem;
@@ -284,7 +298,7 @@
 
         @include mobile-or-tablet-screen {
             height: var(--tab-content-height-mobile);
-            background: var(--general-main-1);
+            background: #0f1419;
 
             .smartcharts {
                 height: calc(100% - 4rem);
@@ -312,7 +326,7 @@
         inset-inline-start: 0;
         width: 23.6rem;
         padding: 0.8rem;
-        background: var(--general-main-1);
+        background: #0f1419;
         z-index: 1;
 
         .db-toolbox {
@@ -321,12 +335,14 @@
                 line-height: 2.6rem;
                 position: relative;
                 cursor: pointer;
+                color: #00ff00; /* PURE GREEN TOOLBOX TITLES */
 
                 &__chevron {
                     position: absolute;
                     inset-inline-end: 0;
                     top: 0.3rem;
                     transition: transform 0.3s ease;
+                    fill: #00ff88; /* GREEN CHEVRON */
 
                     &--active {
                         transform: rotate(180deg);
@@ -336,7 +352,8 @@
             }
 
             &__content {
-                border: solid 1px var(--general-section-1);
+                border: solid 1px #1a1f36;
+                color: #00ff88; /* GREEN CONTENT TEXT */
             }
 
             &__category-menu {
@@ -347,6 +364,16 @@
             &__search {
                 padding: 1.3rem 0.8rem;
                 height: 6rem;
+
+                input {
+                    color: #00ff00; /* GREEN SEARCH TEXT */
+                    background: #1a1f36;
+                    border: 1px solid #00ff88;
+
+                    &::placeholder {
+                        color: #00ff88; /* GREEN PLACEHOLDER */
+                    }
+                }
             }
 
             &__content-wrapper {
@@ -370,11 +397,13 @@
 
         .animation {
             &__button {
-                background-color: var(--purchase-main-1);
+                background-color: #00ff88;
+                color: #000000; /* BLACK TEXT ON GREEN */
+                font-weight: bold;
             }
 
             &__container {
-                background-color: var(--general-main-1);
+                background-color: #0f1419;
             }
         }
     }
@@ -396,7 +425,7 @@
     top: 6.6rem;
     inset-inline-start: 1.6rem;
     z-index: -1;
-    background: var(--general-main-1);
+    background: #0f1419;
     height: var(--tab-content-height);
 
     .injectionDiv {
@@ -434,6 +463,7 @@
 #react-joyride-step-6 {
     .onboard__label {
         margin-bottom: 1.6rem;
+        color: #00ff00; /* PURE GREEN LABELS */
     }
 }
 
@@ -454,6 +484,7 @@
 
         &--close {
             cursor: pointer;
+            color: #00ff88; /* GREEN CLOSE BUTTON */
         }
     }
 
@@ -467,6 +498,7 @@
     &__label {
         text-align: left;
         margin-bottom: 2.4rem;
+        color: #00ff00; /* PURE GREEN LABELS */
     }
 
     &__container {
@@ -488,6 +520,7 @@
 
     &__content {
         text-align: left;
+        color: #00ff88; /* GREEN CONTENT TEXT */
 
         @include rtl {
             text-align: right;
@@ -495,6 +528,7 @@
 
         p {
             font-size: 1.4rem;
+            color: #00ff88; /* GREEN PARAGRAPHS */
         }
 
         &__block {
@@ -507,6 +541,7 @@
 
 .joyride-content {
     font-size: 1.4rem;
+    color: #00ff88; /* GREEN JOYRIDE TEXT */
 
     @media (height <= 790px) {
         max-height: 46vh;
@@ -523,6 +558,7 @@
 
     &__sub-title {
         margin-top: 1rem;
+        color: #00ff00; /* PURE GREEN SUBTITLES */
     }
 
     ul {
@@ -532,6 +568,7 @@
 
         li {
             margin-bottom: 1rem;
+            color: #00ff88; /* GREEN LIST ITEMS */
         }
     }
 
@@ -546,6 +583,7 @@
 
         &__right {
             margin-left: 0.8rem;
+            color: #00ff88; /* GREEN ICON TEXT */
         }
 
         &__left {
@@ -556,6 +594,7 @@
 
                 svg {
                     margin: 0;
+                    fill: #00ff88; /* GREEN ICONS */
                 }
             }
         }
@@ -564,7 +603,6 @@
 
 .dbot-slider {
     @include flex-center(flex-start);
-
     flex-direction: column;
     position: fixed;
     left: 0;
@@ -572,9 +610,9 @@
     width: 100%;
     height: 100vh;
     padding: 1.6rem;
-    border-top: solid 1px var(--border-normal);
+    border-top: solid 1px #334155;
     z-index: 1000;
-    background-color: var(--general-main-1);
+    background-color: #0f1419;
 
     &--tour-position {
         top: 0;
@@ -599,16 +637,20 @@
 
     &__title {
         margin-bottom: 0.8rem;
+        color: #00ff00; /* PURE GREEN TITLES */
+        font-weight: bold;
     }
 
     &__label {
         margin-bottom: 0.8rem;
+        color: #00ff88; /* GREEN LABELS */
     }
 
     &__content {
         text-align: center;
         padding: 0 1.6rem;
         margin-bottom: 1.6rem;
+        color: #00ff88; /* GREEN CONTENT */
 
         @include mobile-or-tablet-screen {
             line-height: 1.8;
@@ -621,7 +663,7 @@
 
     &__image,
     &__media {
-        background: var(--general-section-1);
+        background: #1a1f36;
         text-align: center;
         width: 100%;
         height: 55%;
@@ -654,8 +696,8 @@
         button {
             height: 4rem;
             width: 100%;
-            border: 0.2rem solid $color-grey-1;
-            background: $color-white;
+            border: 0.2rem solid #64748b;
+            background: #f8fafc;
             border-radius: 0.4rem;
             outline: none;
             cursor: pointer;
@@ -663,18 +705,21 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #00ff00; /* PURE GREEN BUTTON TEXT */
+            font-weight: bold;
 
             &.default {
                 background: transparent;
+                color: #00ff88; /* GREEN DEFAULT BUTTONS */
             }
 
             &.danger {
-                background: $color-red;
+                background: #ff4757;
                 border: none;
                 margin-right: 0;
 
                 span {
-                    color: $color-white;
+                    color: #f8fafc;
                 }
             }
         }
@@ -682,7 +727,7 @@
 
     &__bot-builder-tour {
         height: 16rem;
-        background: var(--general-section-1);
+        background: #1a1f36;
 
         .dbot-slider {
             width: 100%;
@@ -694,9 +739,7 @@
             &__progress-bar {
                 width: 50%;
                 margin-bottom: unset;
-
                 @include flex-center(flex-start);
-
                 margin-inline-start: 1rem;
 
                 .progress-bar-circle {
@@ -713,7 +756,7 @@
                     background: transparent;
 
                     span {
-                        color: var(--text-prominent);
+                        color: #00ff00; /* PURE GREEN SPAN TEXT */
                     }
                 }
             }
@@ -724,7 +767,7 @@
 @keyframes blink {
     0%,
     100% {
-        border: 1px solid $color-red;
+        border: 1px solid #ff4757;
     }
 
     50% {
@@ -740,147 +783,58 @@
     height: 2.5rem !important;
     width: 2.5rem !important;
     padding: 0.2rem 0;
-
     @include flex-center;
 }
 
 .beta-server-bot {
-    color: var(--brand-red-coral);
+    color: #ffb800;
     margin-left: 8px;
     padding: 4px 8px;
     height: 22px;
     border-radius: 16px;
     font-size: 1.2rem;
-    border: 2px solid var(--brand-red-coral);
+    border: 2px solid #ffb800;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-// Theme-aware navigation tabs for improved visibility
-// Higher specificity to override any conflicting styles
-body.theme--light .main__container .main__tabs .dc-tabs__item,
-body.theme--dark .main__container .main__tabs .dc-tabs__item {
-    // Use theme-aware text color for better visibility
-    color: var(--text-prominent) !important;
+/* ===== TARGETED DASHBOARD COLORS ===== */
 
-    * {
-        color: var(--text-prominent) !important;
-        font-weight: bold !important;
-    }
-
-    svg,
-    svg > path,
-    svg > g > path {
-        fill: var(--text-prominent) !important;
-    }
-
-    &:not(.dc-tabs__active) {
-        // Inactive tabs with reduced opacity for better hierarchy
-        color: var(--text-less-prominent) !important;
-
-        * {
-            color: var(--text-less-prominent) !important;
-        }
-
-        svg,
-        svg > path,
-        svg > g > path {
-            fill: var(--text-less-prominent) !important;
-        }
-
-        &:hover {
-            // Full prominence on hover for better UX
-            color: var(--text-prominent) !important;
-
-            * {
-                color: var(--text-prominent) !important;
-            }
-
-            svg,
-            svg > path,
-            svg > g > path {
-                fill: var(--text-prominent) !important;
-            }
-        }
-    }
-
-    // Special handling for active tabs to ensure maximum visibility
-    &.dc-tabs__active {
-        color: var(--text-prominent) !important;
-
-        * {
-            color: var(--text-prominent) !important;
-            font-weight: bold !important;
-        }
-
-        svg,
-        svg > path,
-        svg > g > path {
-            fill: var(--text-prominent) !important;
-        }
-    }
+/* 🟣 DEEP PURPLE: ONLY the main instruction paragraph */
+.main .dc-tabs__content .tab__dashboard__content .dc-text:first-of-type:not(h3):not(.table-header) {
+    color: #6B46C1 !important; /* Deep purple */
 }
 
-// Fallback for cases where body classes might not be applied
-.main__container .main__tabs .dc-tabs__item {
-    // Use theme-aware text color for better visibility
-    color: var(--text-prominent) !important;
+/* More specific for just the instruction text */
+.dashboard .subtitle:not(.table-subtitle):not(h3):not(.column-header) {
+    color: #6B46C1 !important; /* Deep purple */
+}
 
-    * {
-        color: var(--text-prominent) !important;
-        font-weight: bold !important;
-    }
+/* 🔵 DARK BLUE: ONLY "Your bots:" header (not table headers) */
+.main .dc-tabs__content .tab__dashboard__table > h3:first-of-type {
+    color: #1e3a8a !important; /* Dark blue */
+}
 
-    svg,
-    svg > path,
-    svg > g > path {
-        fill: var(--text-prominent) !important;
-    }
+/* Alternative selector for "Your bots:" only */
+.dashboard .bots-section h3:first-child:not(.table-header):not(.column-header) {
+    color: #1e3a8a !important; /* Dark blue */
+}
 
-    &:not(.dc-tabs__active) {
-        // Inactive tabs with reduced opacity for better hierarchy
-        color: var(--text-less-prominent) !important;
+/* Exclude table headers from color changes */
+.dashboard .table-header,
+.dashboard .column-header,
+.dashboard thead th,
+.dashboard th {
+    color: initial !important; /* Keep original color */
+}
 
-        * {
-            color: var(--text-less-prominent) !important;
-        }
+/* Ultra-specific: Target only the paragraph, not buttons or headers */
+.tab__dashboard__content > .dc-text.subtitle:not(h1):not(h2):not(h3):not(button) {
+    color: #6B46C1 !important; /* Deep purple */
+}
 
-        svg,
-        svg > path,
-        svg > g > path {
-            fill: var(--text-less-prominent) !important;
-        }
-
-        &:hover {
-            // Full prominence on hover for better UX
-            color: var(--text-prominent) !important;
-
-            * {
-                color: var(--text-prominent) !important;
-            }
-
-            svg,
-            svg > path,
-            svg > g > path {
-                fill: var(--text-prominent) !important;
-            }
-        }
-    }
-
-    // Special handling for active tabs to ensure maximum visibility
-    &.dc-tabs__active {
-        color: var(--text-prominent) !important;
-
-        * {
-            color: var(--text-prominent) !important;
-            font-weight: bold !important;
-        }
-
-        svg,
-        svg > path,
-        svg > g > path {
-            fill: var(--text-prominent) !important;
-        }
-    }
+/* Ultra-specific: Target only section title, not table headers */
+.tab__dashboard__table > h3:not(.table-header):not(thead *) {
+    color: #1e3a8a !important; /* Dark blue */
 }
