@@ -8,18 +8,21 @@ export type TSidebarItem = {
 
 export const SIDEBAR_INTRO = (): TSidebarItem[] => [
     {
-        label: localize('Welcome to Emiisdtrader! '),
+        label: localize('Welcome to Tradeprofxofficial 🚀'),
         content: [
             {
-                data: localize('Your Gateway to Smarter, Automated Profits! I want us to be rich!'),
+                data: localize(
+                    'Empowering traders with smarter tools and automated strategies. Together, we grow wealth with confidence!'
+                ),
             },
         ],
         link: false,
     },
     {
-        label: localize('Guide'),
-        content: [{ data: localize('Deriv Bot - your automated trading partner') }],
+        label: localize('Quick Start Guide'),
+        content: [
+            { data: localize('Tradeprofx Bot – your trusted partner for seamless trading success') },
+        ],
         link: true,
     },
 ];
-
