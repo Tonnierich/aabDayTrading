@@ -112,20 +112,10 @@ const SmartTrader = observer(() => {
   const checkTargetLimits = () => {
     if (targetProfit > 0 && totalProfitLoss >= targetProfit) {
       setStatus(`Target profit of ${targetProfit} ${account_currency} reached! Stopping...`)
-      stopFlagRef.current = true
-      setIsRunning(false)
-      run_panel.setIsRunning(false)
-      run_panel.setHasOpenContract(false)
-      run_panel.setContractStage(contract_stages.NOT_RUNNING)
       return true
     }
     if (targetLoss > 0 && totalProfitLoss <= -targetLoss) {
       setStatus(`Target loss of ${targetLoss} ${account_currency} reached! Stopping...`)
-      stopFlagRef.current = true
-      setIsRunning(false)
-      run_panel.setIsRunning(false)
-      run_panel.setHasOpenContract(false)
-      run_panel.setContractStage(contract_stages.NOT_RUNNING)
       return true
     }
     return false
@@ -361,27 +351,7 @@ const SmartTrader = observer(() => {
                     apiRef.current?.connection?.removeEventListener("message", onMsg)
 
                     const profit = Number(poc?.profit || 0)
-                    setTotalProfitLoss((prev) => {
-                      const newTotal = prev + profit
-                      setTimeout(() => {
-                        if (targetProfit > 0 && newTotal >= targetProfit) {
-                          setStatus(`Target profit of ${targetProfit} ${account_currency} reached! Stopping...`)
-                          stopFlagRef.current = true
-                          setIsRunning(false)
-                          run_panel.setIsRunning(false)
-                          run_panel.setHasOpenContract(false)
-                          run_panel.setContractStage(contract_stages.NOT_RUNNING)
-                        } else if (targetLoss > 0 && newTotal <= -targetLoss) {
-                          setStatus(`Target loss of ${targetLoss} ${account_currency} reached! Stopping...`)
-                          stopFlagRef.current = true
-                          setIsRunning(false)
-                          run_panel.setIsRunning(false)
-                          run_panel.setHasOpenContract(false)
-                          run_panel.setContractStage(contract_stages.NOT_RUNNING)
-                        }
-                      }, 100)
-                      return newTotal
-                    })
+                    setTotalProfitLoss((prev) => prev + profit)
 
                     if (profit > 0) {
                       lastOutcomeWasLossRef.current = false
@@ -516,19 +486,13 @@ const SmartTrader = observer(() => {
                 />
               </div>
               <div className="smart-trader__checkbox-field">
-                <div className="smart-trader__checkbox-wrapper">
-                  <input
-                    id="st-virtual-hooks"
-                    type="checkbox"
-                    checked={enableVirtualHooks}
-                    onChange={(e) => setEnableVirtualHooks(e.target.checked)}
-                    className="smart-trader__checkbox"
-                  />
-                  <label htmlFor="st-virtual-hooks" className="smart-trader__checkbox-label">
-                    <span className="smart-trader__checkbox-indicator"></span>
-                    {localize("Enable Virtual Hooks (VH)")}
-                  </label>
-                </div>
+                <input
+                  id="st-virtual-hooks"
+                  type="checkbox"
+                  checked={enableVirtualHooks}
+                  onChange={(e) => setEnableVirtualHooks(e.target.checked)}
+                />
+                <label htmlFor="st-virtual-hooks">{localize("Enable Virtual Hooks (VH)")}</label>
               </div>
             </div>
 
