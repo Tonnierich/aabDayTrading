@@ -1,76 +1,46 @@
 .display-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  text-align: center;
+  padding: 1rem;
 }
 
 .display-toggle {
-    display: flex;
-    width: 100%;
-    border-bottom: 1px solid var(--border-normal);
-    background: var(--general-main-1);
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
 
-    &__button {
-        flex: 1;
-        padding: 12px 16px;
-        background: transparent;
-        border: none;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--text-general);
-        cursor: pointer;
-        transition: all 0.2s ease;
-        position: relative;
-        outline: none;
+.display-toggle__button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  background: #f5f5f5;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-        &:hover {
-            background: rgba(0, 0, 0, 0.05);
-        }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+}
 
-        &.active {
-            color: var(--brand-red-coral);
-            font-weight: 700;
+.active-trading {
+  background: linear-gradient(135deg, #28a745, #8fd19e); /* Green shades */
+  color: white !important;
+}
 
-            &::after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 2px;
-                background: var(--brand-red-coral);
-            }
-        }
-    }
+.active-advanced {
+  background: linear-gradient(135deg, #ffcc00, #ffdd55); /* Yellow shades */
+  color: #333 !important;
 }
 
 .display-content {
-    flex: 1;
-    overflow: auto;
-}
-
-.advanced-display {
-    &__title {
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-
-    &__status {
-        margin-top: 1rem;
-        padding: 10px;
-        border-radius: 8px;
-        text-align: center;
-        font-size: 14px;
-        font-weight: 500;
-        
-        &.success {
-            background: rgba(76, 175, 80, 0.1);
-            color: #4caf50;
-        }
-        
-        &.error {
-            background: rgba(244, 67, 54, 0.1);
-            color: #f44336;
-        }
-    }
+  padding: 1rem;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
