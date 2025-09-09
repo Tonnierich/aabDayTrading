@@ -26,7 +26,7 @@ const InfoIcon = () => {
   const socialLinks = [
     {
       name: "Telegram",
-      url: "hacked",
+      url: "https://t.me/forexrebateChina",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -38,7 +38,7 @@ const InfoIcon = () => {
     },
     {
       name: "Email",
-      url: "tradeprofx9@gmail.com",
+      url: "greenbacksfx@gmail.com",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -50,7 +50,7 @@ const InfoIcon = () => {
     },
     {
       name: "Website",
-      url: "testingall.pages.dev",
+      url: "https://1daytrading.pages.dev/",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -67,7 +67,7 @@ const InfoIcon = () => {
     },
     {
       name: "TikTok",
-      url: "https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqa3l0dGRPZ0NkV2RyeThVWEsxNmtNNHZ2UWpvd3xBQ3Jtc0ttekdrUDM3ZU1vYmR0LUJzM2t3UGYxekE3YTZYZXRvMjVYVVNONFJwZWdCdHRrT0xCV0pkb3VmWnNiT3VVaFo4RmNJM2F1dXRpWGpfd1JYUXJsMGR4Z084QVZzSXFibUt5VGtnRDZsYzR1WXRhQU43dw&q=https%3A%2F%2Fwww.tiktok.com%2F%40tradeprofx.pro%3F_t%3D8pOtdGbyKbG%26_r%3D1",
+      url: "http://tiktok.com/@deriv_bots_forex",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -79,7 +79,7 @@ const InfoIcon = () => {
     },
     {
       name: "WhatsApp",
-      url: "https://www.youtube.com/redirect?event=channel_description&redir_token=QUFFLUhqbUxXX3hiWXdpb2dXaDVrT0lqYURTS1Q2ZlVRUXxBQ3Jtc0ttYm1GSHRNUDBqTWZZcUNDNmk5c2RPZGVwU1oxMmZYVm1pTlg4UTY3UnBxakRzWVlIOW9XQmwwWXFtQWhFSWs0VWtjZ3dXOFczNFZ5VW9LSTBFZU1udWswbmJLcmRpUFhFMGVZQ1VtajdBMXpfVzBOSQ&q=https%3A%2F%2Fwa.me%2Fqr%2F63FRDYTJL46PH1",
+      url: "https://wa.me/message/JK6NGPEDIGCJC1",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path
@@ -91,7 +91,7 @@ const InfoIcon = () => {
     },
     {
       name: "YouTube",
-      url: "https://www.youtube.com/channel/UCMDzH0sYbNcohLnx4wihG8Q",
+      url: "https://www.youtube.com/@TradingXCel",
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <rect width="24" height="24" rx="5" fill="#EF0000" />
@@ -232,7 +232,7 @@ const AppHeader = observer(() => {
           </Button>
           <Button
             onClick={() => {
-              window.location.href = "https://track.deriv.com/__rVf-VSveO71k0YPxVS0A2Nd7ZgqdRLk/1/"
+              window.location.href = "https://partners.deriv.com/rx?sidc=8C48DEDE-4A2A-459D-9647-12C84588BF20&utm_campaign=dynamicworks&utm_medium=affiliate&utm_source=CU38230", "_blank"
             }}
           >
             <Localize i18n_default_text="Sign up" />
