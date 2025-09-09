@@ -6,7 +6,7 @@ import { LabelPairedMoonCaptionRegularIcon } from '@deriv/quill-icons/LabelPaire
 import { LabelPairedExclamationCaptionRegularIcon } from '@deriv/quill-icons/LabelPaired';
 import { Localize } from '@deriv-com/translations';
 
-import './free-bots.scss';
+import './freebots.scss';
 
 // Import the XML files directly
 import x1 from './bot-files/AUTO wealth mine AI PREMIUM.xml'; // Correct the import statement
@@ -261,4 +261,5 @@ const FreeBots = observer(() => {
 });
 
 export default FreeBots;
+
 
