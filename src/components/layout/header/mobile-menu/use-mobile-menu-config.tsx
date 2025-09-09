@@ -64,14 +64,14 @@ const useMobileMenuConfig = (client?: RootStore['client']) => {
             },
             {
                           as: 'a',
-                          href: 'https://wa.me/2547797990178',
+                          href: 'https://wa.me/message/JK6NGPEDIGCJC1',
                           label: localize('WhatsApp'),
                           LeftComponent: LegacyWhatsappIcon,
                           target: '_blank',
             },
             {
                           as: 'a',
-                          href: 'https://t.me/emiisdtrader',
+                          href: 'https://t.me/forexrebateChina',
                           label: localize('Telegram'),
                           LeftComponent: LegacyTelegramIcon,
                           target: '_blank',
@@ -79,7 +79,7 @@ const useMobileMenuConfig = (client?: RootStore['client']) => {
             
             {
                           as: 'a',
-                          href: 'https://tiktok.com',
+                          href: 'http://tiktok.com/@deriv_bots_forex',
                           label: localize('Tiktok'),
                           LeftComponent: SocialTiktokBrandIcon,
                           target: '_blank',
