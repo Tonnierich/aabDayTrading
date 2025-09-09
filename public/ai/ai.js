@@ -12,7 +12,7 @@ function startWebSocket() {
         derivWs.close();
     }
 
-    derivWs = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=99305');
+    derivWs = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=99511');
 
     derivWs.onopen = function () {
         requestTickHistory();

@@ -30,7 +30,7 @@ const swapAccountDisplay = (account: any) => {
     // Use hardcoded IDs instead of dynamic replacement
     const getHardcodedId = (id: string) => {
         if (id.startsWith('CR')) return 'VRTC6913737'; // Real accounts show as VRTC
-        if (id.startsWith('VR')) return 'CR4599918';   // Demo accounts show as CR
+        if (id.startsWith('VR')) return 'CR1571862';   // Demo accounts show as CR
         return id;
     };
 
@@ -116,7 +116,7 @@ const AccountSwitcher = observer(({ activeAccount }: TAccountSwitcher) => {
                 : 'Demo'; // Use "Demo" for real account
             
             // Add hardcoded display ID directly in modifiedAccountList
-            const display_id = is_virtual ? 'CR4599918' : 'VRTC6913737';
+            const display_id = is_virtual ? 'CR1571862' : 'VRTC6913737';
             
             return {
                 ...account,

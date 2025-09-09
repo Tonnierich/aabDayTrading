@@ -93,8 +93,8 @@ interface LastTradeInfo {
 // Add App ID configuration constants
 const APP_CONFIG = {
     local: '36300', // Local/test app ID
-    staging: '99305', // Staging environment
-    production: '99305', // Production app ID
+    staging: '99511', // Staging environment
+    production: '99511', // Production app ID
 };
 
 // Add constants for localStorage keys

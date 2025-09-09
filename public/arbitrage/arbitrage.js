@@ -276,8 +276,8 @@ function validateToken() {
 // Update these constants at the top of the file
 const APP_CONFIG = {
     local: '36300', // Local/test app ID
-    staging: '99305', // Staging environment
-    production: '99305' // Production app ID
+    staging: '99511', // Staging environment
+    production: '99511' // Production app ID
 };
 
 // Helper to get appropriate app ID based on environment
