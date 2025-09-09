@@ -8,11 +8,11 @@ export type TSidebarItem = {
 
 export const SIDEBAR_INTRO = (): TSidebarItem[] => [
     {
-        label: localize('Welcome to Tradeprofxofficial 🚀'),
+        label: localize('Welcome to Day Trading 🚀'),
         content: [
             {
                 data: localize(
-                    'Empowering traders with smarter tools and automated strategies. Together, we grow wealth with confidence!'
+                    'Unlock the power of smart trading with Day Trading – your hub for strategies, insights, and automated tools to grow with confidence!'
                 ),
             },
         ],
@@ -21,7 +21,7 @@ export const SIDEBAR_INTRO = (): TSidebarItem[] => [
     {
         label: localize('Quick Start Guide'),
         content: [
-            { data: localize('Tradeprofx Bot – your trusted partner for seamless trading success') },
+            { data: localize('Day Trading Bot – your trusted partner for consistent and seamless trading success') },
         ],
         link: true,
     },
